@@ -28,7 +28,7 @@ const path = {
         js: './dist/js',
         img: './dist/img',
         fonts: './dist/fonts',
-        yohoho: './dist/yohoho/*'
+        yohoho: './dist/yohoho'
     }
 };
 
