@@ -20,8 +20,7 @@ const path = {
         js: './src/js/*.js',
         img: './src/img/*.*',
         fonts: './src/fonts/*.*',
-        yohohoFonts: './src/yohoho/fonts/*',
-        yohohoIcons: './src/yohoho/icons/*'
+        yohoho: './src/yohoho/**/*',
     },
     dist:  {
         html: './dist',
@@ -30,8 +29,6 @@ const path = {
         img: './dist/img',
         fonts: './dist/fonts',
         yohoho: './dist/yohoho',
-        yohohoFonts: './dist/yohoho/fonts',
-        yohohoIcons: './dist/yohoho/icons'
     }
 };
 
@@ -103,10 +100,6 @@ export const copy = (done) => {
 export const copyYohoho = (done) => {
     gulp.src(path.src.yohoho)
         .pipe(gulp.dest(path.dist.yohoho))
-    gulp.src(path.src.yohohoFonts)
-        .pipe(gulp.dest(path.dist.yohohoFonts))
-    gulp.src(path.src.yohohoImages)
-        .pipe(gulp.dest(path.dist.yohohoImages))
         done();
 };
 
