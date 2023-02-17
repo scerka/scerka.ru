@@ -112,7 +112,7 @@ export const watch = () => {
 
 export const build = gulp.series(
     delFolder,
-    gulp.parallel(html, css, javascript, image, avatarToWebp, copy)
+    gulp.parallel(html, css, javascript, image, avatarToWebp, copy, copyYohoho)
 );
 
 export default build;
