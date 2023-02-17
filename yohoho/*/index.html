@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="application-name" content="Yohoho">
+		<meta name="theme-color" content="#2a3440">
+		<title>Yohoho - Онлайн кинотеатр</title>
+		<link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/x-icon" href="icons/favicon.ico">
+		<style>
+			@font-face {
+				font-family: 'Neucha';
+				font-style: normal;
+				font-weight: 400;
+				src: url('fonts/neucha.woff2') format('woff2'),
+					 url('fonts/neucha.woff') format('woff');
+			}
+			
+			body {
+				background: #1d2630;
+				color: #fff;
+				margin: 0;
+				font-size: 14px;
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-family: Neucha, sans-serif;
+			}
+
+			.brand {
+				color: #fff;
+				font-size: 70px;
+				font-weight: 700;
+				margin: 0 auto;
+				margin-bottom: 20px;
+				text-align: center;
+				text-shadow: 1px 1px 2px #000,0 0 1em #5bb8cc;
+				text-decoration: none;
+				display: block;
+			}
+
+			.brand:first-letter {
+				text-transform: uppercase;
+			}
+
+			.search-line {
+				width: 650px;		
+			}
+
+			.search-line .form {
+				margin: 20px auto;
+				width: 100%;
+				text-align: center;
+			}
+
+			.search-line .form input {
+				color: #fff;
+				background: #27313e;
+				border: 2px #2f3a46 solid;
+				border-radius: 5px;
+				padding: 15px;
+				margin: 30px auto 0;
+				font-size: 17px;
+				font-family: Neucha, sans-serif;
+			}
+
+			.search-line input:hover {
+				border: 2px #27313e solid;
+				background: #2f3a46;
+			}
+
+			@media only screen and (max-width: 768px) {
+				.search-line {
+					left: 0;
+					top: 0;
+					margin: 0!important;
+					width: 100%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="search-line">
+			<a href="/yohoho" class="brand">Yohoho</a>
+			<div id="yohoho" data-tv="1" data-resize="1">
+				<div class="form">
+					<input type="text" placeholder="Название фильма / ID КиноПоиск" id="search-title" name="title" style="width: 250px">
+					<input type="button" id="search" value="Найти">
+				</div>
+			</div>
+		</div>
+		<script src="yo.js"></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				var search = document.querySelector('#search');
+				var title = document.querySelector('#search-title');
+
+				if (window.location.hash) {
+					var hash = window.location.hash.substring(1);
+					if (title && hash) {
+						title.value = decodeURIComponent(hash);
+						parse();
+					}
+				}
+
+				if (search) {
+					search.addEventListener('click', function () {
+						return parse();
+					});
+				}
+
+				if (title) {
+					title.addEventListener('keyup', function (event) {
+						event.preventDefault();
+						if (event.keyCode === 13) {
+							return parse();
+						}
+					});
+				}
+
+				function parse() {
+					var yohoho = document.querySelector('#yohoho');
+					if (title && title.value && yohoho) {
+						if (/kinopoisk\.ru/i.test(title.value)) {
+							var exec = /(film\/|movie\/).*?([0-9]{3,7})\//gi.exec(title.value);
+							if (exec && exec[2]) {
+								yohoho.dataset.kinopoisk = exec[2];
+								window.location.hash = '#' + yohoho.dataset.kinopoisk;
+								document.title = 'КиноПоиск: ' + yohoho.dataset.kinopoisk;
+							}
+						} else if (/^\d+$/.test(title.value)) {
+							yohoho.dataset.kinopoisk = title.value;
+							window.location.hash = '#' + yohoho.dataset.kinopoisk;
+							document.title = 'КиноПоиск: ' + yohoho.dataset.kinopoisk;
+						} else {
+							yohoho.dataset.title = encodeURIComponent(title.value);
+							window.location.hash = '#' + yohoho.dataset.title;
+							document.title = title.value;
+						}
+						return yo();
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
