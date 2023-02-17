@@ -19,14 +19,16 @@ const path = {
         sass: './src/sass/*.scss',
         js: './src/js/*.js',
         img: './src/img/*.*',
-        fonts: './src/fonts/*.*'
+        fonts: './src/fonts/*.*',
+        yohoho: './src/yohoho/*'
     },
     dist:  {
         html: './dist',
         css: './dist/css',
         js: './dist/js',
         img: './dist/img',
-        fonts: './dist/fonts'
+        fonts: './dist/fonts',
+        yohoho: './dist/yohoho/*'
     }
 };
 
@@ -92,6 +94,12 @@ export const delFolder = () => {
 export const copy = (done) => {
     gulp.src(path.src.fonts)
         .pipe(gulp.dest(path.dist.fonts))
+        done();
+};
+
+export const copyYohoho = (done) => {
+    gulp.src(path.src.yohoho)
+        .pipe(gulp.dest(path.dist.yohoho))
         done();
 };
 
