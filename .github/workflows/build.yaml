@@ -31,7 +31,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Gulp
+      - name: Editor Config check
+        run: npm run editorconfig
+
+      - name: Gulp build
         run: gulp build
 
       - name: Copy files
