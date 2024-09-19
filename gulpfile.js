@@ -1,17 +1,17 @@
 import gulp from 'gulp';
 import concat from 'gulp-concat';
 import htmlmin from 'gulp-htmlmin';
-import sass from 'gulp-sass';
-import sassCompiler from 'node-sass';
 import autoprefixer from 'gulp-autoprefixer';
 import cleanCSS from 'gulp-clean-css';
 import uglify from 'gulp-uglify-es';
 import strip from 'gulp-strip-comments';
-import imagemin from 'gulp-imagemin';
+import imagemin, {gifsicle, mozjpeg, optipng, svgo} from 'gulp-imagemin';
 import webp from 'gulp-webp';
 import clean from 'gulp-clean';
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
 
-sass.compiler = sassCompiler;
+const gSass = gulpSass(dartSass);
 
 const path = {
     src : {
@@ -43,9 +43,9 @@ export const html = () => {
 
 export const css = () => {
     return gulp.src(path.src.sass)
-        .pipe(sass({
+        .pipe(gSass({
             outputStyle: 'compressed'
-        }).on('error', sass.logError))
+        }).on('error', gSass.logError))
         .pipe(cleanCSS({
             level: {
                 1: {
@@ -77,12 +77,7 @@ export const avatarToWebp = (done) => {
 
 export const image = () => (
     gulp.src(path.src.img)
-        .pipe(imagemin([
-            imagemin.mozjpeg({
-                quality: 75,
-                progressive: true
-            })
-        ]))
+        .pipe(imagemin([mozjpeg({quality: 75, progressive: true})]))
         .pipe(gulp.dest(path.dist.img))
 );
 
