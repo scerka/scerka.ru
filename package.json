@@ -4,7 +4,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "gulp build",
+    "build": "gulp build"
   },
   "author": "Scerka",
   "license": "GPL-3.0",
