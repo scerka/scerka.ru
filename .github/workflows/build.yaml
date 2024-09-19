@@ -43,7 +43,9 @@ jobs:
           cp robots.txt dist/robots.txt
           
       - name: Yohoho
-        run: cp -r src/yohoho/* dist/yohoho
+        run: |
+          mkdir dist/yohoho
+          cp -r src/yohoho/* dist/yohoho
 
       - name: Deploy master to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
