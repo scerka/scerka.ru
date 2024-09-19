@@ -36,18 +36,18 @@ export const javascript = () => {
 
 export const fonts = () => {
     return src('./src/fonts/*.*', {encoding: false})
-            .pipe(dest('./dist/fonts'));
+        .pipe(dest('./dist/fonts'));
 };
 
 export const images = (done) => {
     src('./src/img/*.*', {encoding: false})
         .pipe(dest('./dist/img'));
-		
-	src('./src/img/avatar.jpg', {encoding: false})
-		.pipe(webp())
-		.pipe(dest('./dist/img'));
-		
-	done();
+
+    src('./src/img/avatar.jpg', {encoding: false})
+        .pipe(webp())
+        .pipe(dest('./dist/img'));
+
+    done();
 };
 
 export const build = parallel(html, css, javascript, fonts, images);
