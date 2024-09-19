@@ -7,6 +7,7 @@ import htmlmin from 'gulp-htmlmin';
 import strip from 'gulp-strip-comments';
 import terser from 'gulp-terser';
 import webp from 'gulp-webp';
+import imagemin, {gifsicle, mozjpeg, optipng, svgo} from 'gulp-imagemin';
 
 const scss = gulpsass(sass);
 
@@ -41,6 +42,7 @@ export const fonts = () => {
 
 export const images = (done) => {
     src('./src/img/*.*', {encoding: false})
+        .pipe(imagemin([mozjpeg({quality: 75, progressive: true})]))
         .pipe(dest('./dist/img'));
 
     src('./src/img/avatar.jpg', {encoding: false})
