@@ -1,4 +1,1 @@
 User-agent: *
-Host: scerka.com
-Crawl-delay: 1
-Disallow:
