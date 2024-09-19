@@ -1,113 +1,55 @@
-import gulp from 'gulp';
+import { src, dest, parallel } from 'gulp';
 import concat from 'gulp-concat';
-import htmlmin from 'gulp-htmlmin';
 import autoprefixer from 'gulp-autoprefixer';
-import cleanCSS from 'gulp-clean-css';
-import uglify from 'gulp-uglify-es';
+import sass from 'sass';
+import gulpsass from 'gulp-sass';
+import htmlmin from 'gulp-htmlmin';
 import strip from 'gulp-strip-comments';
-import imagemin, {gifsicle, mozjpeg, optipng, svgo} from 'gulp-imagemin';
+import terser from 'gulp-terser';
 import webp from 'gulp-webp';
-import clean from 'gulp-clean';
-import dartSass from 'sass';
-import gulpSass from 'gulp-sass';
 
-const gSass = gulpSass(dartSass);
+const scss = gulpsass(sass);
 
-const path = {
-    src : {
-        html: './src/*.html',
-        sass: './src/sass/*.scss',
-        js: './src/js/*.js',
-        img: './src/img/*.*',
-        fonts: './src/fonts/*.*',
-        yohoho: './src/yohoho/**/*',
-    },
-    dist:  {
-        html: './dist',
-        css: './dist/css',
-        js: './dist/js',
-        img: './dist/img',
-        fonts: './dist/fonts',
-        yohoho: './dist/yohoho',
-    }
+export const css = () => {
+    return src('./src/sass/*.scss')
+        .pipe(scss({ outputStyle: 'compressed'}))
+        .pipe(autoprefixer({ cascade: false }))
+        .pipe(dest('./dist/css'));
 };
 
 export const html = () => {
-    return gulp.src(path.src.html)
+    return src('./src/*.html',)
         .pipe(htmlmin({
             removeComments: true,
             collapseWhitespace: true,
         }))
-        .pipe(gulp.dest(path.dist.html))
-};
-
-export const css = () => {
-    return gulp.src(path.src.sass)
-        .pipe(gSass({
-            outputStyle: 'compressed'
-        }).on('error', gSass.logError))
-        .pipe(cleanCSS({
-            level: {
-                1: {
-                    specialComments: 0
-                }
-            }
-        }))
-        .pipe(autoprefixer({
-            cascade: false
-        }))
-        .pipe(concat('styles.css'))
-        .pipe(gulp.dest(path.dist.css));
+        .pipe(dest('./dist',));
 };
 
 export const javascript = () => {
-    return gulp.src(path.src.js)
+    return src('./src/js/*.js')
         .pipe(strip())
-        .pipe(uglify.default())
+        .pipe(terser())
         .pipe(concat('libs.js'))
-        .pipe(gulp.dest(path.dist.js))
+        .pipe(dest('./dist/js'));
 };
 
-export const avatarToWebp = (done) => {
-    gulp.src('./src/img/avatar.jpg')
-        .pipe(webp())
-        .pipe(gulp.dest('./dist/img'))
-        done();
+export const fonts = () => {
+    return src('./src/fonts/*.*', {encoding: false})
+            .pipe(dest('./dist/fonts'));
 };
 
-export const image = () => (
-    gulp.src(path.src.img)
-        .pipe(imagemin([mozjpeg({quality: 75, progressive: true})]))
-        .pipe(gulp.dest(path.dist.img))
-);
-
-export const delFolder = () => {
-    return gulp.src('./dist', { read: false, allowEmpty: true })
-        .pipe(clean());
+export const images = (done) => {
+    src('./src/img/*.*', {encoding: false})
+        .pipe(dest('./dist/img'));
+		
+	src('./src/img/avatar.jpg', {encoding: false})
+		.pipe(webp())
+		.pipe(dest('./dist/img'));
+		
+	done();
 };
 
-export const copy = (done) => {
-    gulp.src(path.src.fonts)
-        .pipe(gulp.dest(path.dist.fonts))
-        done();
-};
-
-export const copyYohoho = (done) => {
-    gulp.src(path.src.yohoho)
-        .pipe(gulp.dest(path.dist.yohoho))
-        done();
-};
-
-export const watch = () => {
-    gulp.watch(path.src.sass, gulp.series(css));
-    gulp.watch(path.src.js, gulp.series(javascript));
-    gulp.watch(path.src.html, gulp.series(html));
-    gulp.watch(path.src.img, gulp.series(image));
-};
-
-export const build = gulp.series(
-    delFolder,
-    gulp.parallel(html, css, javascript, image, avatarToWebp, copy, copyYohoho)
-);
+export const build = parallel(html, css, javascript, fonts, images);
 
 export default build;

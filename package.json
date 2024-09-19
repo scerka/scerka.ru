@@ -1,23 +1,20 @@
 {
-  "private": true,
-  "name": "scerka.com",
+  "name": "scerka.ru",
   "version": "1.0.0",
-  "description": "build tool for website",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "gulp": "gulp",
     "build": "gulp build",
-    "watch": "gulp watch",
-    "html": "gulp html",
-    "css": "gulp css",
-    "javascript": "gulp javascript",
-    "image": "gulp image",
-    "editorconfig": "editorconfig-checker"
   },
-  "type": "module",
+  "author": "Scerka",
+  "license": "GPL-3.0",
+  "description": "build tool for website",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/scerka/scerka.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/scerka/scerka.com/issues"
   },
   "keywords": [
     "gulp",
@@ -26,24 +23,16 @@
     "html5",
     "css3"
   ],
-  "author": "Scerka",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/scerka/scerka.com/issues"
-  },
   "homepage": "https://github.com/scerka/scerka.com#readme",
   "devDependencies": {
-    "editorconfig-checker": "^5.1.8",
     "gulp": "^5.0.0",
     "gulp-autoprefixer": "^9.0.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^9.1.0",
     "gulp-sass": "^5.1.0",
     "gulp-strip-comments": "^2.6.0",
-    "gulp-uglify-es": "^3.0.0",
+    "gulp-terser": "^2.1.0",
     "gulp-webp": "^5.0.0",
     "sass": "^1.79.1"
   },
