@@ -52,6 +52,4 @@ export const images = (done) => {
     done();
 };
 
-export const build = parallel(html, css, javascript, fonts, images);
-
-export default build;
+export default parallel(html, css, javascript, fonts, images);

@@ -34,18 +34,13 @@ jobs:
       - name: Editor Config check
         run: npm run editorconfig
 
-      - name: Gulp build
-        run: gulp build
+      - name: Gulp
+        run: gulp
 
       - name: Copy files
         run: |
           cp CNAME dist/CNAME
           cp robots.txt dist/robots.txt
-          
-      - name: Yohoho
-        run: |
-          mkdir dist/yohoho
-          cp -r src/yohoho/* dist/yohoho
 
       - name: Deploy master to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
