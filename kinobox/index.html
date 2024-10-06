@@ -1,96 +1,95 @@
 <!DOCTYPE html>
 <html lang="ru">
-	<head>
-		<meta charset="utf-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="icon" type="image/png" href="img/favicon.png">
-		<title>SCERKA - Фильмы и сериалы онлайн</title>
-		<style>@font-face{font-family:'PT Sans';font-style:normal;font-weight:400;src:url(/kinobox/fonts/pt-sans-regular.woff2) format('woff2')}@font-face{font-family:'PT Sans';font-style:italic;font-weight:400;src:url(/kinobox/fonts/pt-sans-italic.woff2) format('woff2')}@font-face{font-family:'PT Sans';font-style:normal;font-weight:700;src:url(/kinobox/fonts/pt-sans-700.woff2) format('woff2')}@font-face{font-family:'PT Sans';font-style:italic;font-weight:700;src:url(/kinobox/fonts/pt-sans-700italic.woff2) format('woff2')}#app,#bgover,#bgrect{width:100%}.footer_body a,a{text-decoration:none}.search_input,body{font-family:'PT Sans',sans-serif}*,.main_info_list li:last-child,body{margin:0}.main_info,.popular_switch,.search_input{box-shadow:0 1px 2px #000}.cover_title,.results_header{text-shadow:0 1px 1px #000;text-align:center}*{box-sizing:border-box;padding:0}body{font-size:14px;color:#ddd;background:#1b1a19}#bgover{position:absolute;top:0;left:0;z-index:-1;height:100%}#bgrect{position:fixed;top:30%;left:50%;transform:translate(-50%,-50%);max-width:1200px;height:900px;background:linear-gradient(69.81deg,rgba(255,209,139,.3) 9.22%,rgba(255,183,217,.3) 33.5%,rgba(139,186,255,.3) 78.79%);border-radius:1000px;filter:blur(160px)}.loader{width:64px;height:64px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffd100' style='animation: loader_spin 2s linear infinite;'%3E%3Cstyle%3E%0A@keyframes loader_spin %7Bfrom %7Btransform: rotate(0deg);%7D to %7Btransform: rotate(360deg);%7D%7D%0A%3C/style%3E%3Cpath d='M2 11h5v2H2zm15 0h5v2h-5zm-6 6h2v5h-2zm0-15h2v5h-2zM4.222 5.636l1.414-1.414 3.536 3.536-1.414 1.414zm15.556 12.728-1.414 1.414-3.536-3.536 1.414-1.414zm-12.02-3.536 1.414 1.414-3.536 3.536-1.414-1.414zm7.07-7.071 3.536-3.535 1.414 1.415-3.536 3.535z'%3E%3C/path%3E%3C/svg%3E");margin:0 auto}header{padding:32px 0}footer{padding:64px 0 32px}.container{max-width:1000px;padding:0 16px;margin:0 auto}.main_info_list li,.main_info_title{margin-bottom:8px}.logo{position:relative;display:inline-flex;align-items:center}.logo:active,.search_button:active{top:1px}.logo svg{width:30px;height:30px;vertical-align:top;filter:drop-shadow(0 1px 1px #000000);margin-right:4px;fill:#ffffffaa}.logo span{font-size:28px;font-weight:700;color:#ffffffaa;text-transform:uppercase;text-shadow:0 1px 2px #000}.footer_body{text-align:center;user-select:none}.footer_body a{font:13px sans-serif;color:#777}.button-top{position:fixed;bottom:2rem;right:2rem;visibility:hidden;width:44px;height:44px;display:flex;justify-content:center;align-items:center;background-color:#ffffff66;border-radius:50%;cursor:pointer}.button-top svg{display:block;width:24px;height:32px;vertical-align:top;fill:#1b1a19}.search_form{position:relative;display:flex}.search_input{width:100%;flex:1;min-width:200px;font-size:18px;color:#ddd;background:#00000088;border:none;border-radius:4px;padding:12px 16px}.search_input:focus{background:#1b1a19;outline:#ffffff44 solid 4px}.search_button{position:absolute;right:0;display:flex;align-items:center;height:100%;line-height:36px;background:0 0;border:none;border-radius:0 4px 4px 0;outline:0;cursor:pointer;padding:12px}.search_button svg{fill:#999999}.search_button:hover svg{fill:#dddddd}.main_info{font-size:16px;text-align:left;background:#00000088;border-radius:8px;padding:16px;margin-top:32px}.main_info_title{font-size:18px}.main_info_list{list-style:inside}.main_info_list span{display:inline-block;vertical-align:top;font:16px/21px Consolas,monospace;color:#ddd;background:#1b1a19;border-radius:4px;padding:0 5px}.popular{margin-top:64px;display:flex;flex-direction:column}.kinobox_player,.results{margin-top:32px}.popular_switch{display:flex;align-self:center;margin-bottom:32px;background:#00000044;border-radius:99px}.popular_switch button{padding:8px 16px;font-family:"Segoe UI",sans-serif;font-size:16px;color:#aaa;background:0 0;border:none;border-radius:99px;outline:0;cursor:pointer}.popular_switch button.active{color:#ddd;background:#00000088}.covers{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:24px}.cover{position:relative;display:grid;align-content:start;gap:8px}.cover_image,.cover_poster{display:block;box-shadow:0 1px 2px #000}.cover_poster{position:relative;overflow:hidden;border-radius:4px}.cover_poster:hover{color:#fc0;outline:#ffcc00 solid 4px}.cover_poster:hover::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:#fff;opacity:.2}.cover_image{min-width:140px;min-height:200px;width:100%;height:auto;aspect-ratio:1/1.5;object-fit:cover;background:#222}.kinobox_player,.results_empty{box-shadow:0 1px 2px #00000088}.cover_title{font-size:14px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;line-clamp:2;-webkit-line-clamp:2;-webkit-box-orient:vertical}.cover_rating,.cover_year{position:absolute;top:4px;font:12px sans-serif;background:#000000cc;border-radius:2px;padding:2px 3px;pointer-events:none}.cover_poster:hover~.cover_title{color:#fc0}.cover_year{left:4px;color:#ddd}.cover_rating{right:4px;color:#fff;opacity:.9}.rating-1,.rating-2,.rating-3,.rating-4{background:#ff4500}.rating-5,.rating-6{background:#696969}.rating-7,.rating-8,.rating-9{background:#32cd32}.results_header{font-size:16px;color:#ddd;margin-bottom:16px}.results_message{display:flex;justify-content:center}.results_empty{font-size:18px;color:#ddd;text-align:center;background:#00000088;border-radius:99px;padding:8px 16px}.kinobox_player{width:100%;height:100%;aspect-ratio:16/9;overflow:hidden;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffd100' style='animation: loader_spin 2s linear infinite;'%3E%3Cstyle%3E%0A@keyframes loader_spin %7Bfrom %7Btransform: rotate(0deg);%7D to %7Btransform: rotate(360deg);%7D%7D%0A%3C/style%3E%3Cpath d='M2 11h5v2H2zm15 0h5v2h-5zm-6 6h2v5h-2zm0-15h2v5h-2zM4.222 5.636l1.414-1.414 3.536 3.536-1.414 1.414zm15.556 12.728-1.414 1.414-3.536-3.536 1.414-1.414zm-12.02-3.536 1.414 1.414-3.536 3.536-1.414-1.414zm7.07-7.071 3.536-3.535 1.414 1.415-3.536 3.535z'%3E%3C/path%3E%3C/svg%3E") center/64px no-repeat #1b1a19;border-radius:8px}</style>
-	</head>
-	<body id="app">
-		<div id="bgover">
-			<div id="bgrect"></div>
-		</div>
-		<header>
-			<div class="container">
-				<a class="logo" href="/" @click.prevent="toHome">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 133"><path fill-rule="evenodd" d="M38 59v74L0 114V82h15v24.5l8 4V74H0V19L38 0v51H23V22.5l-8 4V59h23Zm31-8h15V19L46 0v133l38-19V82H69v24.5l-8 4v-88l8 4V51Z" clip-rule="evenodd"></path></svg>
-					<span>Kinobox</span>
-				</a>
-			</div>
-		</header>
-		<main class="container">
-			<form class="search_form" @submit.prevent="submitSearch">
-				<input class="search_input" name="q" aria-label="search" placeholder="Поиск фильма" v-model="query">
-				<button class="search_button">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-						<path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path>
-					</svg>
-				</button>
-			</form>
-			<section class="section section_main" v-if="section === 1">
-				<div class="main_info">
-					<div class="main_info_title">Поиск доступен по следующим данным:</div>
-					<ul class="main_info_list">
-						<li>Название фильма: <span>Интерстеллар</span></li>
-						<li>ID фильма на сайте Кинопоиск: <span>258687</span></li>
-						<li>ID фильма на сайте IMDb: <span>tt0816692</span></li>
-					</ul>
-				</div>
-				<div class="popular">
-					<div class="popular_switch">
-						<button @click="setPopular('films')" :class="{ active: isPopular('films') }">Популярные фильмы</button>
-						<button @click="setPopular('series')" :class="{ active: isPopular('series') }"> Популярные сериалы
-						</button>
-					</div>
-					<div class="loader" v-if="isFetching"></div>
-					<div class="covers">
-						<div class="cover" v-for="film in popular">
-							<a class="cover_poster" :href="`.#${film.id}`" @click.prevent="toPlayer(film.id)">
-								<img class="cover_image" :src="coverUrl(film.posterUrl)" loading="lazy" alt="">
-							</a>
-							<div class="cover_title">{{ film.title }}</div>
-							<div class="cover_year">{{ film.year }}</div>
-							<div class="cover_rating" :class="`rating-${filmRatingBase(film.rating)}`">{{ filmRating(film.rating) }}</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="section section_results" v-else-if="section === 2">
-				<div class="results">
-					<div class="results_header">Результаты поиска:</div>
-					<div class="loader" v-if="isFetching"></div>
-					<div class="results_message" v-if="isFetching === false && searchResults.length === 0">
-						<div class="results_empty">Ничего не найдено.</div>
-					</div>
-					<div class="covers">
-						<div class="cover" v-for="film in searchResults">
-							<a class="cover_poster" :href="`.#${film.id}`" @click.prevent="toPlayer(film.id)">
-								<img class="cover_image" :src="posterUrl(film.id)" loading="lazy" alt="">
-							</a>
-							<div class="cover_title">{{ film.title }}</div>
-							<div class="cover_year">{{ film.year }}</div>
-							<div class="cover_rating" :class="`rating-${filmRatingBase(film.rating)}`">{{ filmRating(film.rating) }}</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="section section_player" v-else-if="section === 3">
-				<div class="kinobox_player"></div>
-			</section>
-		</main>
-		<footer>
-			<div class="footer_body">© 2024 SCERKA.RU</div>
-		</footer>
-		<div class="button-top" aria-label="Проскроллить вверх">
-			<svg width="18" height="18" viewBox="0 0 18 18">
-				<path fill-rule="evenodd" clip-rule="evenodd"
-					  d="M9.5 18a.5.5 0 0 0 .5-.5V3.8l6.246 6.246a.5.5 0 0 0 .708 0l.692-.692a.5.5 0 0 0 0-.708L9 0 .354 8.646a.5.5 0 0 0 0 .708l.692.692a.5.5 0 0 0 .708 0L8 3.8v13.7a.5.5 0 0 0 .5.5h1Z"></path>
-			</svg>
-		</div>
-		
-		<script src="vue.global.prod.js"></script>
-		<script type="module">Vue.createApp({data:()=>({section:1,query:"",isFetching:!1,searchResults:[],currentPopular:"films",popularData:null,popular:null}),methods:{setTitle(t){document.title=t},toHome(){let t=new URL(window.location.href.split("?")[0]);t.hash="",window.history.pushState(null,"",t),window.dispatchEvent(new Event("popstate")),this.section=1},toPlayer(t){let e=new URL(window.location.href.split("?")[0]);e.hash=t,window.history.pushState(null,"",e),window.dispatchEvent(new Event("popstate")),this.section=3},isPopular(t){return this.currentPopular===t},setPopular(t){this.currentPopular=t,this.popular=null,this.popular=this.popularData[t]},posterUrl:t=>`https://st.kp.yandex.net/images/film_iphone/iphone360_${t}.jpg`,filmTitle:t=>t||"–",filmYear:t=>t||"–",filmRating:t=>t?t.toFixed(1):"–",filmRatingBase:t=>t?Math.trunc(t):"0",coverUrl:t=>t?t.replace(/360$/,"300x450"):"https://st.kp.yandex.net/images/no-poster.gif",hasQuery:()=>new URL(window.location).searchParams.has("q"),getQuery:()=>new URL(window.location).searchParams.get("q")||"",setQuery(t){let e=new URL(window.location);e.searchParams.set("q",t),window.history.pushState(null,t,e),window.dispatchEvent(new Event("popstate"))},hasHash:()=>window.location.hash.length>1,getHash:()=>window.location.hash.substring(1),isId:t=>!(!t.match(/^(\d{3,9})$/)&&!t.match(/^(tt\d{4,9})$/)),submitSearch(){0!==this.query.length&&(this.isId(this.query)?this.toPlayer(this.query):this.setQuery(this.query))},getSection(){return this.hasQuery()?2:this.hasHash()?3:1},async handleUrl(){this.section=this.getSection(),this.query=this.getQuery()||this.getHash()||"",await this.fetchSectionContent()},async fetchSectionContent(){if(1===this.section&&(this.setTitle("SCERKA - Фильмы и сериалы онлайн"),!this.popularData))try{this.isFetching=!0;let t=await fetch("https://kinobox.tv/api/films/popular?type=film"),e=await t.json(),i=await fetch("https://kinobox.tv/api/films/popular?type=series"),s=await i.json();this.popularData={films:e,series:s},this.popular=this.popularData.films,this.isFetching=!1}catch(t){console.error(t),this.popularData={films:[],series:[]},this.isFetching=!1,this.popular=[]}if(2===this.section){this.setTitle(`${this.getQuery()} - результаты поиска`),this.searchResults=[],this.isFetching=!0;let t=await fetch(`https://kinobox.tv/api/films/search/?title=${this.getQuery()}`);this.searchResults=await t.json(),this.isFetching=!1}3===this.section&&(this.setTitle(`#${this.getHash()} - смотреть онлайн`),setTimeout(()=>{new Kinobox(".kinobox_player",{search:{query:this.getHash()}}).init()},1))}},async mounted(){this.query=decodeURI(this.getQuery()),await this.handleUrl(),window.addEventListener("popstate",async()=>{await this.handleUrl()})}}).mount("#app"),(()=>{let t=document.querySelector(".button-top");t&&(t.addEventListener("click",t=>{t.preventDefault(),window.scrollTo(0,0)}),setTimeout(()=>{0!==window.scrollY&&(t.style.visibility="visible")}),window.addEventListener("scroll",()=>{let e=0===window.scrollY;t.style.visibility=e?"hidden":"visible"}))})();</script>
-		<script src="https://kinobox.tv/kinobox.min.js?v2"></script>
-	</body>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="img/favicon.png">
+        <title>SCERKA - Фильмы и сериалы онлайн</title>
+        <style>@font-face{font-family:'PT Sans';font-style:normal;font-weight:400;src:url(/kinobox/fonts/pt-sans-regular.woff2) format('woff2')}@font-face{font-family:'PT Sans';font-style:italic;font-weight:400;src:url(/kinobox/fonts/pt-sans-italic.woff2) format('woff2')}@font-face{font-family:'PT Sans';font-style:normal;font-weight:700;src:url(/kinobox/fonts/pt-sans-700.woff2) format('woff2')}@font-face{font-family:'PT Sans';font-style:italic;font-weight:700;src:url(/kinobox/fonts/pt-sans-700italic.woff2) format('woff2')}#app,#bgover,#bgrect{width:100%}.footer_body a,a{text-decoration:none}.search_input,body{font-family:'PT Sans',sans-serif}*,.main_info_list li:last-child,body{margin:0}.main_info,.popular_switch,.search_input{box-shadow:0 1px 2px #000}.cover_title,.results_header{text-shadow:0 1px 1px #000;text-align:center}*{box-sizing:border-box;padding:0}body{font-size:14px;color:#ddd;background:#1b1a19}#bgover{position:absolute;top:0;left:0;z-index:-1;height:100%}#bgrect{position:fixed;top:30%;left:50%;transform:translate(-50%,-50%);max-width:1200px;height:900px;background:linear-gradient(69.81deg,rgba(255,209,139,.3) 9.22%,rgba(255,183,217,.3) 33.5%,rgba(139,186,255,.3) 78.79%);border-radius:1000px;filter:blur(160px)}.loader{width:64px;height:64px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffd100' style='animation: loader_spin 2s linear infinite;'%3E%3Cstyle%3E%0A@keyframes loader_spin %7Bfrom %7Btransform: rotate(0deg);%7D to %7Btransform: rotate(360deg);%7D%7D%0A%3C/style%3E%3Cpath d='M2 11h5v2H2zm15 0h5v2h-5zm-6 6h2v5h-2zm0-15h2v5h-2zM4.222 5.636l1.414-1.414 3.536 3.536-1.414 1.414zm15.556 12.728-1.414 1.414-3.536-3.536 1.414-1.414zm-12.02-3.536 1.414 1.414-3.536 3.536-1.414-1.414zm7.07-7.071 3.536-3.535 1.414 1.415-3.536 3.535z'%3E%3C/path%3E%3C/svg%3E");margin:0 auto}header{padding:32px 0}footer{padding:64px 0 32px}.container{max-width:1000px;padding:0 16px;margin:0 auto}.main_info_list li,.main_info_title{margin-bottom:8px}.logo{position:relative;display:inline-flex;align-items:center}.logo:active,.search_button:active{top:1px}.logo svg{width:30px;height:30px;vertical-align:top;filter:drop-shadow(0 1px 1px #000000);margin-right:4px;fill:#ffffffaa}.logo span{font-size:28px;font-weight:700;color:#ffffffaa;text-transform:uppercase;text-shadow:0 1px 2px #000}.footer_body{text-align:center;user-select:none}.footer_body a{font:13px sans-serif;color:#777}.button-top{position:fixed;bottom:2rem;right:2rem;visibility:hidden;width:44px;height:44px;display:flex;justify-content:center;align-items:center;background-color:#ffffff66;border-radius:50%;cursor:pointer}.button-top svg{display:block;width:24px;height:32px;vertical-align:top;fill:#1b1a19}.search_form{position:relative;display:flex}.search_input{width:100%;flex:1;min-width:200px;font-size:18px;color:#ddd;background:#00000088;border:none;border-radius:4px;padding:12px 16px}.search_input:focus{background:#1b1a19;outline:#ffffff44 solid 4px}.search_button{position:absolute;right:0;display:flex;align-items:center;height:100%;line-height:36px;background:0 0;border:none;border-radius:0 4px 4px 0;outline:0;cursor:pointer;padding:12px}.search_button svg{fill:#999999}.search_button:hover svg{fill:#dddddd}.main_info{font-size:16px;text-align:left;background:#00000088;border-radius:8px;padding:16px;margin-top:32px}.main_info_title{font-size:18px}.main_info_list{list-style:inside}.main_info_list span{display:inline-block;vertical-align:top;font:16px/21px Consolas,monospace;color:#ddd;background:#1b1a19;border-radius:4px;padding:0 5px}.popular{margin-top:64px;display:flex;flex-direction:column}.kinobox_player,.results{margin-top:32px}.popular_switch{display:flex;align-self:center;margin-bottom:32px;background:#00000044;border-radius:99px}.popular_switch button{padding:8px 16px;font-family:"Segoe UI",sans-serif;font-size:16px;color:#aaa;background:0 0;border:none;border-radius:99px;outline:0;cursor:pointer}.popular_switch button.active{color:#ddd;background:#00000088}.covers{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:24px}.cover{position:relative;display:grid;align-content:start;gap:8px}.cover_image,.cover_poster{display:block;box-shadow:0 1px 2px #000}.cover_poster{position:relative;overflow:hidden;border-radius:4px}.cover_poster:hover{color:#fc0;outline:#ffcc00 solid 4px}.cover_poster:hover::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:#fff;opacity:.2}.cover_image{min-width:140px;min-height:200px;width:100%;height:auto;aspect-ratio:1/1.5;object-fit:cover;background:#222}.kinobox_player,.results_empty{box-shadow:0 1px 2px #00000088}.cover_title{font-size:14px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;line-clamp:2;-webkit-line-clamp:2;-webkit-box-orient:vertical}.cover_rating,.cover_year{position:absolute;top:4px;font:12px sans-serif;background:#000000cc;border-radius:2px;padding:2px 3px;pointer-events:none}.cover_poster:hover~.cover_title{color:#fc0}.cover_year{left:4px;color:#ddd}.cover_rating{right:4px;color:#fff;opacity:.9}.rating-1,.rating-2,.rating-3,.rating-4{background:#ff4500}.rating-5,.rating-6{background:#696969}.rating-7,.rating-8,.rating-9{background:#32cd32}.results_header{font-size:16px;color:#ddd;margin-bottom:16px}.results_message{display:flex;justify-content:center}.results_empty{font-size:18px;color:#ddd;text-align:center;background:#00000088;border-radius:99px;padding:8px 16px}.kinobox_player{width:100%;height:100%;aspect-ratio:16/9;overflow:hidden;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffd100' style='animation: loader_spin 2s linear infinite;'%3E%3Cstyle%3E%0A@keyframes loader_spin %7Bfrom %7Btransform: rotate(0deg);%7D to %7Btransform: rotate(360deg);%7D%7D%0A%3C/style%3E%3Cpath d='M2 11h5v2H2zm15 0h5v2h-5zm-6 6h2v5h-2zm0-15h2v5h-2zM4.222 5.636l1.414-1.414 3.536 3.536-1.414 1.414zm15.556 12.728-1.414 1.414-3.536-3.536 1.414-1.414zm-12.02-3.536 1.414 1.414-3.536 3.536-1.414-1.414zm7.07-7.071 3.536-3.535 1.414 1.415-3.536 3.535z'%3E%3C/path%3E%3C/svg%3E") center/64px no-repeat #1b1a19;border-radius:8px}</style>
+    </head>
+    <body id="app">
+        <div id="bgover">
+            <div id="bgrect"></div>
+        </div>
+        <header>
+            <div class="container">
+                <a class="logo" href="/" @click.prevent="toHome">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 133"><path fill-rule="evenodd" d="M38 59v74L0 114V82h15v24.5l8 4V74H0V19L38 0v51H23V22.5l-8 4V59h23Zm31-8h15V19L46 0v133l38-19V82H69v24.5l-8 4v-88l8 4V51Z" clip-rule="evenodd"></path></svg>
+                    <span>Kinobox</span>
+                </a>
+            </div>
+        </header>
+        <main class="container">
+            <form class="search_form" @submit.prevent="submitSearch">
+                <input class="search_input" name="q" aria-label="search" placeholder="Поиск фильма" v-model="query">
+                <button class="search_button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path>
+                    </svg>
+                </button>
+            </form>
+            <section class="section section_main" v-if="section === 1">
+                <div class="main_info">
+                    <div class="main_info_title">Поиск доступен по следующим данным:</div>
+                    <ul class="main_info_list">
+                        <li>Название фильма: <span>Интерстеллар</span></li>
+                        <li>ID фильма на сайте Кинопоиск: <span>258687</span></li>
+                        <li>ID фильма на сайте IMDb: <span>tt0816692</span></li>
+                    </ul>
+                </div>
+                <div class="popular">
+                    <div class="popular_switch">
+                        <button @click="setPopular('films')" :class="{ active: isPopular('films') }">Популярные фильмы</button>
+                        <button @click="setPopular('series')" :class="{ active: isPopular('series') }"> Популярные сериалы
+                        </button>
+                    </div>
+                    <div class="loader" v-if="isFetching"></div>
+                    <div class="covers">
+                        <div class="cover" v-for="film in popular">
+                            <a class="cover_poster" :href="`.#${film.id}`" @click.prevent="toPlayer(film.id)">
+                                <img class="cover_image" :src="coverUrl(film.posterUrl)" loading="lazy" alt="">
+                            </a>
+                            <div class="cover_title">{{ film.title }}</div>
+                            <div class="cover_year">{{ film.year }}</div>
+                            <div class="cover_rating" :class="`rating-${filmRatingBase(film.rating)}`">{{ filmRating(film.rating) }}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section section_results" v-else-if="section === 2">
+                <div class="results">
+                    <div class="results_header">Результаты поиска:</div>
+                    <div class="loader" v-if="isFetching"></div>
+                    <div class="results_message" v-if="isFetching === false && searchResults.length === 0">
+                        <div class="results_empty">Ничего не найдено.</div>
+                    </div>
+                    <div class="covers">
+                        <div class="cover" v-for="film in searchResults">
+                            <a class="cover_poster" :href="`.#${film.id}`" @click.prevent="toPlayer(film.id)">
+                                <img class="cover_image" :src="posterUrl(film.id)" loading="lazy" alt="">
+                            </a>
+                            <div class="cover_title">{{ film.title }}</div>
+                            <div class="cover_year">{{ film.year }}</div>
+                            <div class="cover_rating" :class="`rating-${filmRatingBase(film.rating)}`">{{ filmRating(film.rating) }}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section section_player" v-else-if="section === 3">
+                <div class="kinobox_player"></div>
+            </section>
+        </main>
+        <footer>
+            <div class="footer_body">© 2024 SCERKA.RU</div>
+        </footer>
+        <div class="button-top" aria-label="Проскроллить вверх">
+            <svg width="18" height="18" viewBox="0 0 18 18">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 18a.5.5 0 0 0 .5-.5V3.8l6.246 6.246a.5.5 0 0 0 .708 0l.692-.692a.5.5 0 0 0 0-.708L9 0 .354 8.646a.5.5 0 0 0 0 .708l.692.692a.5.5 0 0 0 .708 0L8 3.8v13.7a.5.5 0 0 0 .5.5h1Z"></path>
+            </svg>
+        </div>
+
+        <script src="vue.global.prod.js"></script>
+        <script type="module">Vue.createApp({data:()=>({section:1,query:"",isFetching:!1,searchResults:[],currentPopular:"films",popularData:null,popular:null}),methods:{setTitle(t){document.title=t},toHome(){let t=new URL(window.location.href.split("?")[0]);t.hash="",window.history.pushState(null,"",t),window.dispatchEvent(new Event("popstate")),this.section=1},toPlayer(t){let e=new URL(window.location.href.split("?")[0]);e.hash=t,window.history.pushState(null,"",e),window.dispatchEvent(new Event("popstate")),this.section=3},isPopular(t){return this.currentPopular===t},setPopular(t){this.currentPopular=t,this.popular=null,this.popular=this.popularData[t]},posterUrl:t=>`https://st.kp.yandex.net/images/film_iphone/iphone360_${t}.jpg`,filmTitle:t=>t||"–",filmYear:t=>t||"–",filmRating:t=>t?t.toFixed(1):"–",filmRatingBase:t=>t?Math.trunc(t):"0",coverUrl:t=>t?t.replace(/360$/,"300x450"):"https://st.kp.yandex.net/images/no-poster.gif",hasQuery:()=>new URL(window.location).searchParams.has("q"),getQuery:()=>new URL(window.location).searchParams.get("q")||"",setQuery(t){let e=new URL(window.location);e.searchParams.set("q",t),window.history.pushState(null,t,e),window.dispatchEvent(new Event("popstate"))},hasHash:()=>window.location.hash.length>1,getHash:()=>window.location.hash.substring(1),isId:t=>!(!t.match(/^(\d{3,9})$/)&&!t.match(/^(tt\d{4,9})$/)),submitSearch(){0!==this.query.length&&(this.isId(this.query)?this.toPlayer(this.query):this.setQuery(this.query))},getSection(){return this.hasQuery()?2:this.hasHash()?3:1},async handleUrl(){this.section=this.getSection(),this.query=this.getQuery()||this.getHash()||"",await this.fetchSectionContent()},async fetchSectionContent(){if(1===this.section&&(this.setTitle("SCERKA - Фильмы и сериалы онлайн"),!this.popularData))try{this.isFetching=!0;let t=await fetch("https://kinobox.tv/api/films/popular?type=film"),e=await t.json(),i=await fetch("https://kinobox.tv/api/films/popular?type=series"),s=await i.json();this.popularData={films:e,series:s},this.popular=this.popularData.films,this.isFetching=!1}catch(t){console.error(t),this.popularData={films:[],series:[]},this.isFetching=!1,this.popular=[]}if(2===this.section){this.setTitle(`${this.getQuery()} - результаты поиска`),this.searchResults=[],this.isFetching=!0;let t=await fetch(`https://kinobox.tv/api/films/search/?title=${this.getQuery()}`);this.searchResults=await t.json(),this.isFetching=!1}3===this.section&&(this.setTitle(`#${this.getHash()} - смотреть онлайн`),setTimeout(()=>{new Kinobox(".kinobox_player",{search:{query:this.getHash()}}).init()},1))}},async mounted(){this.query=decodeURI(this.getQuery()),await this.handleUrl(),window.addEventListener("popstate",async()=>{await this.handleUrl()})}}).mount("#app"),(()=>{let t=document.querySelector(".button-top");t&&(t.addEventListener("click",t=>{t.preventDefault(),window.scrollTo(0,0)}),setTimeout(()=>{0!==window.scrollY&&(t.style.visibility="visible")}),window.addEventListener("scroll",()=>{let e=0===window.scrollY;t.style.visibility=e?"hidden":"visible"}))})();</script>
+        <script src="https://kinobox.tv/kinobox.min.js?v2"></script>
+    </body>
 </html>
