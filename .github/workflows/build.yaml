@@ -40,12 +40,6 @@ jobs:
       - name: Copy files
         run: |
           cp CNAME dist/CNAME
-          cp robots.txt dist/robots.txt
-          
-      - name: Copy kinobox
-        run: |
-          mkdir dist/kinobox
-          cp -r kinobox/* dist/kinobox
 
       - name: Deploy master to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

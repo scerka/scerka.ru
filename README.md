@@ -1,2 +1,2 @@
 # scerka.ru
-My onepage website
+My onepage website.
