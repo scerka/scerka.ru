@@ -1,0 +1,48 @@
+{
+  "name": "scerka.ru",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp build",
+	"editorconfig": "editorconfig-checker"
+  },
+  "author": "Scerka",
+  "license": "GPL-3.0",
+  "description": "build tool for website",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scerka/scerka.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/scerka/scerka.com/issues"
+  },
+  "keywords": [
+    "gulp",
+    "website",
+    "javascript",
+    "html5",
+    "css3"
+  ],
+  "homepage": "https://github.com/scerka/scerka.com#readme",
+  "devDependencies": {
+    "editorconfig-checker": "^5.1.8",
+    "gulp": "^5.0.0",
+    "gulp-autoprefixer": "^9.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^9.1.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-strip-comments": "^2.6.0",
+    "gulp-terser": "^2.1.0",
+    "gulp-webp": "^5.0.0",
+    "sass": "^1.79.1"
+  },
+  "browserslist": [
+    "last 2 version",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=18.0"
+  }
+}

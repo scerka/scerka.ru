@@ -1,0 +1,56 @@
+name: Build and deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gh-pages-workflow
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Editor Config check
+        run: npm run editorconfig
+
+      - name: Gulp
+        run: gulp
+
+      - name: Copy files
+        run: |
+          cp CNAME dist/CNAME
+          cp robots.txt dist/robots.txt
+          
+      - name: Copy kinobox
+        run: |
+          mkdir dist/kinobox
+          cp -r kinobox/* dist/kinobox
+
+      - name: Deploy master to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
+          clean: true
+          single-commit: true

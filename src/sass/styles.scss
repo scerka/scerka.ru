@@ -1,0 +1,160 @@
+@import 'normalize.scss';
+
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/roboto-condensed-v19-latin_cyrillic-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/roboto-condensed-v19-latin_cyrillic-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('../fonts/roboto-condensed-v19-latin_cyrillic-regular.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../fonts/roboto-condensed-v19-latin_cyrillic-regular.woff') format('woff'), /* Modern Browsers */
+        url('../fonts/roboto-condensed-v19-latin_cyrillic-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('../fonts/roboto-condensed-v19-latin_cyrillic-regular.svg#RobotoCondensed') format('svg'); /* Legacy iOS */
+        font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/roboto-condensed-v19-latin_cyrillic-700.eot'); /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/roboto-condensed-v19-latin_cyrillic-700.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../fonts/roboto-condensed-v19-latin_cyrillic-700.woff') format('woff'), /* Modern Browsers */
+        url('../fonts/roboto-condensed-v19-latin_cyrillic-700.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('../fonts/roboto-condensed-v19-latin_cyrillic-700.svg#RobotoCondensed') format('svg'), /* Legacy iOS */
+        url('../fonts/roboto-condensed-v19-latin_cyrillic-700.eot?#iefix') format('embedded-opentype'); /* IE6-IE8 */
+        font-display: swap;
+}
+
+:root {
+    --animate-duration: 1s;
+    --animate-delay: 1s;
+    --animate-repeat: 1
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    background-color: #202225;
+    background: #202225 url(../img/bg.jpg) center 0 no-repeat;
+    background-size: cover;
+    letter-spacing: 1px;
+}
+
+#particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.list {
+    margin: 0;
+    margin-top: 10px;
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+
+    &__link {
+        display: block;
+        width: 36px;
+        height: 36px;
+        padding: .7rem;
+        border-radius: 32px;
+        opacity: .8;
+        transition: all ease-in-out .2s;
+
+        &:hover {
+            opacity: 1;
+            background: rgba(255,255,255,0.2);
+        }
+    }
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,.5);
+    margin: 0 10px;
+
+    &__avatar {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    &__fio {
+        font-size: 36px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    &__tagline {
+        margin-top: 5px;
+        font-size: 16px;
+        opacity: .9;
+        text-align: center;
+    }
+}
+
+.footer {
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+    margin: 15px 10px;
+}
+
+.animate {
+    &__animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-duration: var(--animate-duration);
+        animation-duration: var(--animate-duration);
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both
+    }
+
+    &__jackInTheBox {
+        -webkit-animation-name: jackInTheBox;
+        animation-name: jackInTheBox
+    }
+}
+
+@keyframes jackInTheBox {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(.1) rotate(30deg);
+        transform: scale(.1) rotate(30deg);
+        -webkit-transform-origin: center bottom;
+        transform-origin: center bottom
+    }
+    50% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    70% {
+        -webkit-transform: rotate(3deg);
+        transform: rotate(3deg)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+
+@import 'tippy.scss';
